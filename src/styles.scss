@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+$headerFooterHeight: 10rem;
+$minContentHeight: calc(100vh - $headerFooterHeight);
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header,
+.footer {
+  width: 100%;
+  height: $headerFooterHeight;
+  position: absolute;
+
+  background-color: #101030;
+
+  &.header {
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
+
+    top: 0;
+  }
+  &.footer {
+    clip-path: polygon(0 70%, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 70%, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.content {
+  margin-top: $headerFooterHeight;
+  min-height: $minContentHeight;
+}
