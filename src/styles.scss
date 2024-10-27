@@ -9,17 +9,16 @@ body {
 
 .header,
 .footer {
-  width: 100%;
-  height: $headerFooterHeight;
   position: absolute;
 
   background-color: #101030;
+  width: 100%;
+  height: $headerFooterHeight;
 
   &.header {
+    top: 0;
     clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
-
-    top: 0;
   }
   &.footer {
     clip-path: polygon(0 70%, 100% 0, 100% 100%, 0 100%);
