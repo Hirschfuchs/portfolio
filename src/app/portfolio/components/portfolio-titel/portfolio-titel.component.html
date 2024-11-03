@@ -1,0 +1,6 @@
+<div class="header-container" [style.background]="background()">
+  <h2>{{ sektion().titel }}</h2>
+  @if (sektion().subtitle !== undefined) {
+    <h3>{{ sektion().subtitle }}</h3>
+  }
+</div>
