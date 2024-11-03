@@ -1,4 +1,10 @@
+import { NgOptimizedImage } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MarkdownComponent, provideMarkdown } from 'ngx-markdown';
+import { PortfolioTitelComponent } from './components/portfolio-titel/portfolio-titel.component';
+import { portfolioSektionen } from './data/sektionen/portfolio-sektionen';
+import { PortfolioSektion } from './model/portfolio-sektion';
 
 /**
  * Die Portfoliokomponente hat die Aufgabe, eine schicke, moderne und grafische
@@ -7,8 +13,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [],
+  imports: [MarkdownComponent, NgOptimizedImage, PortfolioTitelComponent],
+  providers: [provideMarkdown({ loader: HttpClient })],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss',
 })
-export class PortfolioComponent {}
+export class PortfolioComponent {
+  protected readonly sektionen: ReadonlyArray<PortfolioSektion> =
+    portfolioSektionen;
+}
