@@ -1,1 +1,12 @@
-<p>portfolio works!</p>
+@for (sektion of sektionen; track $index) {
+  <section [id]="sektion.domId">
+    @switch (sektion.sektionsart) {
+      @case ("titel") {
+        <app-portfolio-titel [sektion]="sektion" />
+      }
+      @default {
+        <h2>Fehlerhafte Sektionsbeschreibung!</h2>
+      }
+    }
+  </section>
+}
