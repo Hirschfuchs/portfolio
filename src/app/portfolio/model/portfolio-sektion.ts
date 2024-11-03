@@ -1,3 +1,5 @@
+import { PortfolioImage } from './portfolio-image';
+
 interface PortfolioSektionColorBackground {
   type: 'color';
   color: `#${string}`;
@@ -5,7 +7,7 @@ interface PortfolioSektionColorBackground {
 
 interface PortfolioSektionImageBackground {
   type: 'image';
-  imageUrl: string;
+  image: PortfolioImage;
 }
 
 type PortfolioSektionBackground =
