@@ -47,3 +47,18 @@ h6 {
   margin-top: $headerFooterHeight;
   min-height: $minContentHeight;
 }
+
+.bg-dunkel {
+  background-color: $background-dunkel;
+  color: $text-hell;
+}
+
+.bg-grau {
+  background-color: $background-grau;
+  color: $text-dunkel;
+}
+
+.bg-weiss {
+  background-color: $background-weiss;
+  color: $text-dunkel;
+}

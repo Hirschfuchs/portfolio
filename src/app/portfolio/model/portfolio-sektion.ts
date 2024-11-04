@@ -7,6 +7,7 @@ interface PortfolioSektionColorBackground {
 
 interface PortfolioSektionImageBackground {
   type: 'image';
+  bgClass: `bg-${string}`;
   image: PortfolioImage;
 }
 
