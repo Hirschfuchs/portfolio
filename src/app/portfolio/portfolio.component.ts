@@ -45,6 +45,10 @@ export class PortfolioComponent {
   sektionenHintergrundKlasse(sektion: PortfolioSektion) {
     const background = sektion.background;
 
+    if (background.type === 'image') {
+      return background.bgClass;
+    }
+
     if (background.type === 'class') {
       return background.class;
     }
