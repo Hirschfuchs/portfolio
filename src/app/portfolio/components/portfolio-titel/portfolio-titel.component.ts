@@ -1,5 +1,5 @@
-import { Component, computed, input, InputSignal } from '@angular/core';
-import { PortfolioSektion } from '../../model/portfolio-sektion';
+import { Component, input, InputSignal } from '@angular/core';
+import { PortfolioHeadlineSektion } from '../../model/portfolio-sektion';
 
 @Component({
   selector: 'app-portfolio-titel',
@@ -9,16 +9,6 @@ import { PortfolioSektion } from '../../model/portfolio-sektion';
   styleUrl: './portfolio-titel.component.scss',
 })
 export class PortfolioTitelComponent {
-  public sektion: InputSignal<PortfolioSektion> =
-    input.required<PortfolioSektion>();
-
-  protected readonly background = computed(() => {
-    const background = this.sektion().background;
-
-    if (background.type === 'image') {
-      return `url("/data/assets/${background.image.src}")`;
-    }
-
-    return background.color;
-  });
+  public sektion: InputSignal<PortfolioHeadlineSektion> =
+    input.required<PortfolioHeadlineSektion>();
 }
