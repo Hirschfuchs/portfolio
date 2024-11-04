@@ -1,4 +1,5 @@
 import { PortfolioSektion } from '../../model/portfolio-sektion';
+import { sektionAgil } from './sektion-agil';
 import { sektionCraftsmanship } from './sektion-craftsmanship';
 import { sektionExtraMeile } from './sektion-extra-meile';
 import { sektionFancy } from './sektion-fancy';
@@ -9,4 +10,5 @@ export const portfolioSektionen: ReadonlyArray<PortfolioSektion> = [
   sektionCraftsmanship,
   sektionFancy,
   sektionExtraMeile,
+  sektionAgil,
 ];
