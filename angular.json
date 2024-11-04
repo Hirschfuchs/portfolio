@@ -27,6 +27,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app/portfolio/data/assets",
+                "output": "data/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app/portfolio/data/texte",
+                "output": "data/texte"
               }
             ],
             "styles": [
@@ -85,6 +95,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app/portfolio/data/assets",
+                "output": "data/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app/portfolio/data/texte",
+                "output": "data/texte"
               }
             ],
             "styles": [
