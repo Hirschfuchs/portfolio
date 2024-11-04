@@ -10,9 +10,15 @@ interface PortfolioSektionImageBackground {
   image: PortfolioImage;
 }
 
+interface PortfolioSektionStyleclassBackground {
+  type: 'class';
+  class: `bg-${string}`;
+}
+
 type PortfolioSektionBackground =
   | PortfolioSektionColorBackground
-  | PortfolioSektionImageBackground;
+  | PortfolioSektionImageBackground
+  | PortfolioSektionStyleclassBackground;
 
 interface PortfolioSektionBase {
   domId: `sektion-${string}`;
@@ -25,4 +31,21 @@ export interface PortfolioHeadlineSektion extends PortfolioSektionBase {
   subtitle?: string;
 }
 
-export type PortfolioSektion = PortfolioHeadlineSektion;
+interface TextMitBild {
+  ueberschrift: string;
+  text: string;
+  grafik: PortfolioImage;
+}
+
+export interface PortfolioTexteMitBildernSektion extends PortfolioSektionBase {
+  sektionsart: 'texte-mit-bildern';
+  head?: {
+    titel: string;
+    text?: string;
+  };
+  textBildKombinationen: ReadonlyArray<TextMitBild>;
+}
+
+export type PortfolioSektion =
+  | PortfolioHeadlineSektion
+  | PortfolioTexteMitBildernSektion;
