@@ -4,7 +4,11 @@
   display: block;
 
   background: $background-dunkel;
-  min-height: 100vh;
+
+  height: 100vh;
+
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 }
 
 section {
@@ -16,6 +20,8 @@ section {
   background-size: cover !important;
 
   min-height: 100vh;
+
+  scroll-snap-align: start;
 
   font-size: 1.4rem;
 
