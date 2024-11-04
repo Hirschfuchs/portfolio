@@ -2,6 +2,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MarkdownComponent, provideMarkdown } from 'ngx-markdown';
+import { PortfolioTexteMitBildernComponent } from './components/portfolio-texte-mit-bildern/portfolio-texte-mit-bildern.component';
 import { PortfolioTitelComponent } from './components/portfolio-titel/portfolio-titel.component';
 import { portfolioSektionen } from './data/sektionen/portfolio-sektionen';
 import { PortfolioSektion } from './model/portfolio-sektion';
@@ -13,7 +14,12 @@ import { PortfolioSektion } from './model/portfolio-sektion';
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [MarkdownComponent, NgOptimizedImage, PortfolioTitelComponent],
+  imports: [
+    MarkdownComponent,
+    NgOptimizedImage,
+    PortfolioTitelComponent,
+    PortfolioTexteMitBildernComponent,
+  ],
   providers: [provideMarkdown({ loader: HttpClient })],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss',

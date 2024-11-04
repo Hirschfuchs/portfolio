@@ -1,0 +1,26 @@
+@if (sektion().head !== undefined) {
+  <div class="sektion-kopf">
+    <h3>{{ sektion().head?.titel }}</h3>
+
+    @if (sektion().head?.text !== undefined) {
+      <p>{{ sektion().head?.text }}</p>
+    }
+  </div>
+}
+
+<div class="sektion-inhalt">
+  @for (textBildKombo of sektion().textBildKombinationen; track $index) {
+    <div class="text-bild-kombo">
+      <div class="text">
+        <h4>{{ textBildKombo.ueberschrift }}</h4>
+        <p>{{ textBildKombo.text }}</p>
+      </div>
+      <img
+        [ngSrc]="'data/assets/' + textBildKombo.grafik.src"
+        [width]="textBildKombo.grafik.width"
+        [height]="textBildKombo.grafik.height"
+        [alt]="textBildKombo.grafik.alt"
+      />
+    </div>
+  }
+</div>
