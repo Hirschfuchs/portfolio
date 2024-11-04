@@ -21,4 +21,28 @@ import { PortfolioSektion } from './model/portfolio-sektion';
 export class PortfolioComponent {
   protected readonly sektionen: ReadonlyArray<PortfolioSektion> =
     portfolioSektionen;
+
+  sektionenHintergrund(sektion: PortfolioSektion) {
+    const background = sektion.background;
+
+    if (background.type === 'image') {
+      return `url("/data/assets/${background.image.src}")`;
+    }
+
+    if (background.type === 'class') {
+      return '';
+    }
+
+    return background.color;
+  }
+
+  sektionenHintergrundKlasse(sektion: PortfolioSektion) {
+    const background = sektion.background;
+
+    if (background.type === 'class') {
+      return background.class;
+    }
+
+    return '';
+  }
 }

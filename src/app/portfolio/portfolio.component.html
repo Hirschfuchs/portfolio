@@ -1,5 +1,9 @@
 @for (sektion of sektionen; track $index) {
-  <section [id]="sektion.domId">
+  <section
+    [id]="sektion.domId"
+    [style.background]="sektionenHintergrund(sektion)"
+    [className]="sektionenHintergrundKlasse(sektion)"
+  >
     @switch (sektion.sektionsart) {
       @case ("titel") {
         <app-portfolio-titel [sektion]="sektion" />
