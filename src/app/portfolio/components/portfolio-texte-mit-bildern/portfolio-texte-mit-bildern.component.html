@@ -16,10 +16,11 @@
         <p>{{ textBildKombo.text }}</p>
       </div>
       <img
-        [ngSrc]="'data/assets/' + textBildKombo.grafik.src"
+        [ngSrc]="resolveImagePath(textBildKombo.grafik.src)"
         [width]="textBildKombo.grafik.width"
         [height]="textBildKombo.grafik.height"
         [alt]="textBildKombo.grafik.alt"
+        (click)="openInLightbox($index)"
       />
     </div>
   }
