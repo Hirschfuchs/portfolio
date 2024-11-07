@@ -1,0 +1,20 @@
+name: PR testen
+
+on:
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  test:
+    name: Tests ausführen
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Abhängigkeiten laden
+        run: npm i
+
+      - name: Alle Tests ausführen
+        run: npm run test
