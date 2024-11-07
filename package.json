@@ -22,7 +22,7 @@
     "@angular/platform-browser": "18.2.8",
     "@angular/platform-browser-dynamic": "18.2.8",
     "@angular/router": "18.2.8",
-    "marked": "12.0.2",
+    "marked": "14.1.4",
     "ngx-lightbox": "3.0.0",
     "ngx-markdown": "18.1.0",
     "rxjs": "7.8.1",
