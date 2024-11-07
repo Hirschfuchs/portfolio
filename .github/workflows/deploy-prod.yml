@@ -35,7 +35,7 @@ jobs:
           path: dist/
 
       - name: FTP-Upload
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: bono-fox.de
           username: ${{ secrets.FTP_USER }}
