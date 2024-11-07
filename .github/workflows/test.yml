@@ -17,4 +17,4 @@ jobs:
         run: npm i
 
       - name: Alle Tests ausführen
-        run: npm run test
+        run: npm run test-cov-headless
