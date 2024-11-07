@@ -1,20 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator';
 import { PortfolioTitelComponent } from './portfolio-titel.component';
 
 describe('PortfolioTitelComponent', () => {
+  const createHost = createHostFactory(PortfolioTitelComponent);
+  let spectator: SpectatorHost<PortfolioTitelComponent>;
+
   let component: PortfolioTitelComponent;
-  let fixture: ComponentFixture<PortfolioTitelComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [PortfolioTitelComponent]
-    })
-    .compileComponents();
+  beforeEach(() => {
+    spectator = createHost('<app-portfolio-titel [sektion]="sektion" />', {
+      hostProps: {
+        sektion: { titel: 'Test-Titelkomponente', sektionsart: 'titel' },
+      },
+    });
 
-    fixture = TestBed.createComponent(PortfolioTitelComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = spectator.component;
   });
 
   it('should create', () => {
