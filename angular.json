@@ -30,6 +30,11 @@
               },
               {
                 "glob": "**/*",
+                "input": "src/app/lebenslauf/data/assets",
+                "output": "data/assets"
+              },
+              {
+                "glob": "**/*",
                 "input": "src/app/portfolio/data/assets",
                 "output": "data/assets"
               },
@@ -95,6 +100,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app/lebenslauf/data/assets",
+                "output": "data/assets"
               },
               {
                 "glob": "**/*",
