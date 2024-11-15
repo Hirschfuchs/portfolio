@@ -11,7 +11,37 @@
           [style.border-color]="primaryColor"
         />
         <h2>{{ getShortName() }}</h2>
-      </div></ng-template
+        <h3>Persönliches</h3>
+        <app-key-value-pair
+          key="Geboren"
+          [value]="getGeburtsdaten()"
+        /><app-key-value-pair
+          key="Staatsangehörigkeit"
+          [value]="lebenslaufdaten.meta.staatsangehoerigkeit"
+        /><app-key-value-pair
+          key="Familienstand"
+          [value]="lebenslaufdaten.meta.familienstand"
+        />
+        <h3>Kontakt</h3>
+        <app-key-value-pair key="Adresse" [value]="getAdressdaten()" />
+        @if (lebenslaufdaten.kontakt.mail !== undefined) {
+          <app-key-value-pair
+            key="Mail"
+            [value]="lebenslaufdaten.kontakt.mail ?? ''"
+          />
+        }
+        @if (lebenslaufdaten.kontakt.telefon?.mobil !== undefined) {
+          <app-key-value-pair
+            key="Telefon (mobil)"
+            [value]="lebenslaufdaten.kontakt.telefon?.mobil ?? ''"
+          />
+        }
+        @if (lebenslaufdaten.kontakt.telefon?.festnetz !== undefined) {
+          <app-key-value-pair
+            key="Telefon"
+            [value]="lebenslaufdaten.kontakt.telefon?.festnetz ?? ''"
+          />
+        }</div></ng-template
     ><ng-template #contentRight></ng-template
   ></app-split-2>
 </app-frame>
