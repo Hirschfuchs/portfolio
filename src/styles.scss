@@ -42,8 +42,18 @@ h6 {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
   }
   &.footer {
+    top: 1rem;
     clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 100%);
     -webkit-clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 100%);
+
+    &.border {
+      top: 0;
+    }
+  }
+
+  &.border {
+    background-color: aqua;
+    height: $headerFooterHeight + 1rem;
   }
 }
 

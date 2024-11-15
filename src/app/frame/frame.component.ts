@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from "@angular/router";
+import { RouterOutlet } from '@angular/router';
+import { ConfigurationService } from '../lebenslauf/configuration.service';
 
 @Component({
   selector: 'app-frame',
@@ -8,4 +9,8 @@ import { RouterOutlet } from "@angular/router";
   templateUrl: './frame.component.html',
   styleUrl: './frame.component.scss',
 })
-export class FrameComponent {}
+export class FrameComponent {
+  constructor(private readonly configurationService: ConfigurationService) {}
+
+  protected primaryColor = this.configurationService.getPrimaryColor();
+}
