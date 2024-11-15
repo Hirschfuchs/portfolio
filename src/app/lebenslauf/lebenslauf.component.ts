@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FrameComponent } from '../frame/frame.component';
 import { Split2Component } from '../split-2/split-2.component';
 import { ConfigurationService } from './configuration.service';
+import { irgendwelcheLebenslaufdaten } from './data/irgendwelcheLebenslaufdaten';
 
 @Component({
   selector: 'app-lebenslauf',
@@ -12,6 +13,8 @@ import { ConfigurationService } from './configuration.service';
   styleUrl: './lebenslauf.component.scss',
 })
 export class LebenslaufComponent {
+  lebenslaufdaten = irgendwelcheLebenslaufdaten;
+
   constructor(private readonly configurationService: ConfigurationService) {}
 
   protected primaryColor = this.configurationService.getPrimaryColor();
