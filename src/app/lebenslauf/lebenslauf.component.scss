@@ -1,5 +1,9 @@
 @import "../../styles";
 
+:host {
+  text-align: center;
+}
+
 .lebenslauf-left {
   display: flex;
   flex-direction: column;
