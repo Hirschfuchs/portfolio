@@ -1,0 +1,15 @@
+:host {
+  display: inline-grid;
+  grid-template-columns: 40% 55%;
+
+  text-align: left;
+
+  white-space: pre-wrap;
+
+  > div {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
