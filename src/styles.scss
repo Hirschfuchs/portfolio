@@ -28,7 +28,9 @@ h6 {
 
 .header,
 .footer {
-  position: absolute;
+  position: relative;
+
+  z-index: 100;
 
   background-color: $schraegen;
   width: 100%;
