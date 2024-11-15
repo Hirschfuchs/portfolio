@@ -1,0 +1,26 @@
+@import "../../colors";
+
+:host {
+  display: flex;
+  flex-direction: row;
+
+  .left {
+    position: relative;
+
+    width: 30%;
+  }
+
+  .main {
+    width: 70%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > .content {
+      width: fit-content;
+    }
+  }
+}

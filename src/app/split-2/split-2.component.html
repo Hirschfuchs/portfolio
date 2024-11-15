@@ -1,0 +1,19 @@
+@if (contentLeft() !== undefined) {
+  <div class="left container">
+    <div class="background"></div>
+    <div>
+      <ng-container *ngTemplateOutlet="contentLeft() ?? null" />
+    </div>
+  </div>
+}
+<div class="main container">
+  <div>
+    <ng-container
+      *ngTemplateOutlet="contentRight() ?? ngContentBox"
+    ></ng-container>
+  </div>
+</div>
+
+<ng-template #ngContentBox>
+  <ng-content />
+</ng-template>

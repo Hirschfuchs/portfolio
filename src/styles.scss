@@ -61,6 +61,15 @@ h6 {
   min-height: $minContentHeight;
 }
 
+.background {
+  position: absolute;
+  top: -$headerFooterHeight;
+  z-index: -1;
+  background-color: $background-grau;
+  width: 100%;
+  height: calc(100% + (2 * $headerFooterHeight));
+}
+
 .bg-dunkel {
   background-color: $background-dunkel;
   color: $text-hell;
