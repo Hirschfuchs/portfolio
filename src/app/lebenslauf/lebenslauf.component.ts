@@ -18,4 +18,10 @@ export class LebenslaufComponent {
   constructor(private readonly configurationService: ConfigurationService) {}
 
   protected primaryColor = this.configurationService.getPrimaryColor();
+
+  getShortName() {
+    const nameData = this.lebenslaufdaten.meta.name;
+
+    return `${nameData.vorname} ${nameData.nachname}`;
+  }
 }
