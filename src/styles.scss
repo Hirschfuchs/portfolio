@@ -1,8 +1,8 @@
 @import "colors";
 @import "fonts";
 
-$headerFooterHeight: 10rem;
-$minContentHeight: calc(100vh - $headerFooterHeight);
+$headerFooterHeight: 6rem;
+$minContentHeight: calc(100vh - (2 * $headerFooterHeight));
 
 html,
 body {
@@ -46,7 +46,6 @@ h6 {
 }
 
 .content {
-  margin-top: $headerFooterHeight;
   min-height: $minContentHeight;
 }
 
