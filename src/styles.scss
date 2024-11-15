@@ -38,12 +38,12 @@ h6 {
 
   &.header {
     top: 0;
-    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
   }
   &.footer {
-    clip-path: polygon(0 70%, 100% 0, 100% 100%, 0 100%);
-    -webkit-clip-path: polygon(0 70%, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 100%);
   }
 }
 
