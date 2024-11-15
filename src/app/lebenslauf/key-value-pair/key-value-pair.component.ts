@@ -9,5 +9,6 @@ import { Component, input } from '@angular/core';
 })
 export class KeyValuePairComponent {
   public readonly key = input.required<string>();
-  public readonly value = input.required<string>();
+  public readonly textValue = input<string | undefined>();
+  public readonly levelValue = input<string | undefined>();
 }

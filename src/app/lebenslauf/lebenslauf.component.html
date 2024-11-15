@@ -14,32 +14,32 @@
         <h3>Persönliches</h3>
         <app-key-value-pair
           key="Geboren"
-          [value]="getGeburtsdaten()"
+          [textValue]="getGeburtsdaten()"
         /><app-key-value-pair
           key="Staatsangehörigkeit"
-          [value]="lebenslaufdaten.meta.staatsangehoerigkeit"
+          [textValue]="lebenslaufdaten.meta.staatsangehoerigkeit"
         /><app-key-value-pair
           key="Familienstand"
-          [value]="lebenslaufdaten.meta.familienstand"
+          [textValue]="lebenslaufdaten.meta.familienstand"
         />
         <h3>Kontakt</h3>
-        <app-key-value-pair key="Adresse" [value]="getAdressdaten()" />
+        <app-key-value-pair key="Adresse" [textValue]="getAdressdaten()" />
         @if (lebenslaufdaten.kontakt.mail !== undefined) {
           <app-key-value-pair
             key="Mail"
-            [value]="lebenslaufdaten.kontakt.mail ?? ''"
+            [textValue]="lebenslaufdaten.kontakt.mail ?? ''"
           />
         }
         @if (lebenslaufdaten.kontakt.telefon?.mobil !== undefined) {
           <app-key-value-pair
             key="Telefon (mobil)"
-            [value]="lebenslaufdaten.kontakt.telefon?.mobil ?? ''"
+            [textValue]="lebenslaufdaten.kontakt.telefon?.mobil ?? ''"
           />
         }
         @if (lebenslaufdaten.kontakt.telefon?.festnetz !== undefined) {
           <app-key-value-pair
             key="Telefon"
-            [value]="lebenslaufdaten.kontakt.telefon?.festnetz ?? ''"
+            [textValue]="lebenslaufdaten.kontakt.telefon?.festnetz ?? ''"
           />
         }</div></ng-template
     ><ng-template #contentRight></ng-template
