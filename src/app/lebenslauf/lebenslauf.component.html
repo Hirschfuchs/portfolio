@@ -41,6 +41,13 @@
             key="Telefon"
             [textValue]="lebenslaufdaten.kontakt.telefon?.festnetz ?? ''"
           />
+        }
+        <h3>Sprachen</h3>
+        @for (sprache of lebenslaufdaten.sprachen; track $index) {
+          <app-key-value-pair
+            [key]="sprache.bezeichnung"
+            [levelValue]="sprache.level"
+          />
         }</div></ng-template
     ><ng-template #contentRight></ng-template
   ></app-split-2>
