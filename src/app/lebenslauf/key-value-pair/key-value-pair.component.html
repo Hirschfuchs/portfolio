@@ -1,2 +1,20 @@
 <div>{{ key() }}:</div>
-<div>{{ textValue() ?? "" }}</div>
+@if (textValue() !== undefined) {
+  <div>{{ textValue() ?? "" }}</div>
+} @else if (levelValue() !== undefined) {
+  <div>
+    @for (star of getLevelStars(); track $index) {
+      @switch (star) {
+        @case (IconState.EMPTY) {
+          <mat-icon>radio_button_unchecked</mat-icon>
+        }
+        @case (IconState.HALF) {
+          <mat-icon>contrast</mat-icon>
+        }
+        @case (IconState.FULL) {
+          <mat-icon>circle</mat-icon>
+        }
+      }
+    }
+  </div>
+}
