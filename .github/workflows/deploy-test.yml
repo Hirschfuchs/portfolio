@@ -88,8 +88,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
-          title: Version ${{ needs.get-version.outputs.major-minor-version }}.${{ needs.set-patch.outputs.patch-version }}
-          tag: v${{ needs.get-version.outputs.major-minor-version }}.${{ needs.set-patch.outputs.patch-version }}
+          title: Version ${{ needs.get-version.outputs.major-minor-version }}.0
+          tag: v${{ needs.get-version.outputs.major-minor-version }}.0
           workdir: dist/portfolio-fox
     needs: [get-version, set-patch]
 
