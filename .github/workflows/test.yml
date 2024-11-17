@@ -18,3 +18,8 @@ jobs:
 
       - name: Alle Tests ausführen
         run: npm run test-cov-headless
+
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
