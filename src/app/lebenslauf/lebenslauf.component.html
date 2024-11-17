@@ -28,19 +28,19 @@
         @if (lebenslaufdaten.kontakt.mail !== undefined) {
           <app-key-value-pair
             key="Mail"
-            [textValue]="lebenslaufdaten.kontakt.mail ?? ''"
+            [textValue]="lebenslaufdaten.kontakt.mail"
           />
         }
         @if (lebenslaufdaten.kontakt.telefon?.mobil !== undefined) {
           <app-key-value-pair
             key="Telefon (mobil)"
-            [textValue]="lebenslaufdaten.kontakt.telefon?.mobil ?? ''"
+            [textValue]="lebenslaufdaten.kontakt.telefon?.mobil"
           />
         }
         @if (lebenslaufdaten.kontakt.telefon?.festnetz !== undefined) {
           <app-key-value-pair
             key="Telefon"
-            [textValue]="lebenslaufdaten.kontakt.telefon?.festnetz ?? ''"
+            [textValue]="lebenslaufdaten.kontakt.telefon?.festnetz"
           />
         }
         <h3>Sprachen</h3>
