@@ -58,6 +58,14 @@ jobs:
         with:
           name: result
           path: dist/
+      - name: Release erzeugen
+        uses: elgohr/Github-Release-Action@v5
+        env:
+          GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+        with:
+          title: Version ${{ vars.MAJOR_MINOR_VERSION }}.${{ vars.PATCH_VERSION }}
+          tag: v${{ vars.MAJOR_MINOR_VERSION }}.${{ vars.PATCH_VERSION }}
+          workdir: dist/portfolio-fox
     needs: [version]
 
   deploy:
