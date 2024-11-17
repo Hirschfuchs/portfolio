@@ -7,23 +7,40 @@ on:
   workflow_dispatch:
 
 jobs:
-  version:
-    name: Version setzen
+  get-version:
+    name: Versionsinformationen auslesen
     runs-on: ubuntu-latest
+    outputs:
+      major-minor-version: ${{ steps.major-minor-version.outputs.RESULT }}
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
       - name: Aktuelle Major-Minor-Version ermitteln
         id: major-minor-version
         run: echo "RESULT=$(npm pkg get version --workspaces=false | tr -d \" | rev | cut -d '.' -f2- | rev)" >> $GITHUB_OUTPUT
+
+  set-patch:
+    name: Version aktualisieren
+    runs-on: ubuntu-latest
+    outputs:
+      patch-version: ${{ steps.patch-version.outputs.RESULT }}
+    steps:
+      # Wenn nur Patch-Update
+      - name: Patch-Version ermitteln
+        id: patch-version
+        if: ${{ needs.get-version.outputs.major-minor-version == vars.MAJOR_MINOR_VERSION }}
+        run: echo "RESULT=$((${{ vars.PATCH_VERSION }} + 1))" >> $GITHUB_OUTPUT
       - name: Patch-Version erhöhen
-        if: ${{ steps.major-minor-version.outputs.RESULT == vars.MAJOR_MINOR_VERSION }}
-        uses: eriknyk/increment-variable-action@v1.0.0
+        if: ${{ needs.get-version.outputs.major-minor-version == vars.MAJOR_MINOR_VERSION }}
+        uses: mmoyaferrer/set-github-variable@v1.0.0
         with:
           name: "PATCH_VERSION"
+          value: ${{ steps.patch-version.outputs.RESULT }}
+          repository: Hirschfuchs/portfolio
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+      # Wenn Major-/Minor-Update
       - name: Patch-Version zurücksetzen
-        if: ${{ steps.major-minor-version.outputs.RESULT != vars.MAJOR_MINOR_VERSION }}
+        if: ${{ needs.get-version.outputs.major-minor-version != vars.MAJOR_MINOR_VERSION }}
         uses: mmoyaferrer/set-github-variable@v1.0.0
         with:
           name: "PATCH_VERSION"
@@ -31,24 +48,31 @@ jobs:
           repository: Hirschfuchs/portfolio
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Major-Minor-Version speichern
-        if: ${{ steps.major-minor-version.outputs.RESULT != vars.MAJOR_MINOR_VERSION }}
+        if: ${{ needs.get-version.outputs.major-minor-version != vars.MAJOR_MINOR_VERSION }}
         uses: mmoyaferrer/set-github-variable@v1.0.0
         with:
           name: "MAJOR_MINOR_VERSION"
-          value: ${{ steps.major-minor-version.outputs.RESULT }}
+          value: ${{ needs.get-version.outputs.major-minor-version }}
           repository: Hirschfuchs/portfolio
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+    needs: [get-version]
 
   build:
     name: Bauen
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Version setzen
-        run: npm version $MAJOR_MINOR_VERSION.$PATCH_VERSION --no-git-tag-version
+      - name: Version setzen (Nur Patch)
+        if: ${{ needs.get-version.outputs.major-minor-version == vars.MAJOR_MINOR_VERSION }}
+        run: npm version $MAJOR_MINOR_VERSION.$PATCH_VERSION --no-git-tag-version --allow-same-version
         env:
-          MAJOR_MINOR_VERSION: ${{ vars.MAJOR_MINOR_VERSION }}
-          PATCH_VERSION: ${{ vars.PATCH_VERSION }}
+          MAJOR_MINOR_VERSION: ${{ needs.get-version.outputs.major-minor-version }}
+          PATCH_VERSION: ${{ needs.set-patch.outputs.patch-version }}
+      - name: Version setzen (Major/Minor)
+        if: ${{ needs.get-version.outputs.major-minor-version != vars.MAJOR_MINOR_VERSION }}
+        run: npm version $MAJOR_MINOR_VERSION.0 --no-git-tag-version --allow-same-version
+        env:
+          MAJOR_MINOR_VERSION: ${{ needs.get-version.outputs.major-minor-version }}
       - uses: browser-actions/setup-chrome@v1
       - name: Abhängigkeiten laden
         run: npm i
@@ -59,14 +83,15 @@ jobs:
           name: result
           path: dist/
       - name: Release erzeugen
+        if: ${{ needs.get-version.outputs.major-minor-version != vars.MAJOR_MINOR_VERSION }}
         uses: elgohr/Github-Release-Action@v5
         env:
           GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
-          title: Version ${{ vars.MAJOR_MINOR_VERSION }}.${{ vars.PATCH_VERSION }}
-          tag: v${{ vars.MAJOR_MINOR_VERSION }}.${{ vars.PATCH_VERSION }}
+          title: Version ${{ needs.get-version.outputs.major-minor-version }}.${{ needs.set-patch.outputs.patch-version }}
+          tag: v${{ needs.get-version.outputs.major-minor-version }}.${{ needs.set-patch.outputs.patch-version }}
           workdir: dist/portfolio-fox
-    needs: [version]
+    needs: [get-version, set-patch]
 
   deploy:
     name: Deployen
