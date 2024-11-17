@@ -32,7 +32,7 @@ jobs:
         run: echo "RESULT=$((${{ vars.PATCH_VERSION }} + 1))" >> $GITHUB_OUTPUT
       - name: Patch-Version erhöhen
         if: ${{ needs.get-version.outputs.major-minor-version == vars.MAJOR_MINOR_VERSION }}
-        uses: openfoxes/set-github-variable@v1.1.2
+        uses: openfoxes/set-github-variable@v1.2.0
         with:
           name: "PATCH_VERSION"
           value: ${{ steps.patch-version.outputs.RESULT }}
@@ -41,7 +41,7 @@ jobs:
       # Wenn Major-/Minor-Update
       - name: Patch-Version zurücksetzen
         if: ${{ needs.get-version.outputs.major-minor-version != vars.MAJOR_MINOR_VERSION }}
-        uses: openfoxes/set-github-variable@v1.1.2
+        uses: openfoxes/set-github-variable@v1.2.0
         with:
           name: "PATCH_VERSION"
           value: "0"
@@ -49,7 +49,7 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Major-Minor-Version speichern
         if: ${{ needs.get-version.outputs.major-minor-version != vars.MAJOR_MINOR_VERSION }}
-        uses: openfoxes/set-github-variable@v1.1.2
+        uses: openfoxes/set-github-variable@v1.2.0
         with:
           name: "MAJOR_MINOR_VERSION"
           value: ${{ needs.get-version.outputs.major-minor-version }}
