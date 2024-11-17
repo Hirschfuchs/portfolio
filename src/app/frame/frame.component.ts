@@ -7,7 +7,6 @@ import { ConfigurationService } from '../lebenslauf/configuration.service';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './frame.component.html',
-  styleUrl: './frame.component.scss',
 })
 export class FrameComponent {
   constructor(private readonly configurationService: ConfigurationService) {}
