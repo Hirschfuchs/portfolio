@@ -11,17 +11,19 @@ jobs:
     name: Version setzen
     runs-on: ubuntu-latest
     steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
       - name: Aktuelle Major-Minor-Version ermitteln
         id: major-minor-version
-        run: npm pkg get version --workspaces=false | tr -d \" | rev | cut -d '.' -f2- | rev >> $RESULT
+        run: echo "RESULT=$(npm pkg get version --workspaces=false | tr -d \" | rev | cut -d '.' -f2- | rev)" >> $GITHUB_OUTPUT
       - name: Patch-Version erhöhen
-        if: ${{ steps.major-minor-version.outputs.RESULT == env.MAJOR_MINOR_VERSION }}
+        if: ${{ steps.major-minor-version.outputs.RESULT == vars.MAJOR_MINOR_VERSION }}
         uses: eriknyk/increment-variable-action@v1.0.0
         with:
           name: "PATCH_VERSION"
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Patch-Version zurücksetzen
-        if: ${{ steps.major-minor-version.outputs.RESULT != env.MAJOR_MINOR_VERSION }}
+        if: ${{ steps.major-minor-version.outputs.RESULT != vars.MAJOR_MINOR_VERSION }}
         uses: mmoyaferrer/set-github-variable@v1.0.0
         with:
           name: "PATCH_VERSION"
@@ -29,7 +31,7 @@ jobs:
           repository: Hirschfuchs/portfolio
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Major-Minor-Version speichern
-        if: ${{ steps.major-minor-version.outputs.RESULT != env.MAJOR_MINOR_VERSION }}
+        if: ${{ steps.major-minor-version.outputs.RESULT != vars.MAJOR_MINOR_VERSION }}
         uses: mmoyaferrer/set-github-variable@v1.0.0
         with:
           name: "MAJOR_MINOR_VERSION"
@@ -42,6 +44,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Version setzen
+        run: npm version $MAJOR_MINOR_VERSION.$PATCH_VERSION --no-git-tag-version
+        env:
+          MAJOR_MINOR_VERSION: ${{ vars.MAJOR_MINOR_VERSION }}
+          PATCH_VERSION: ${{ vars.PATCH_VERSION }}
       - uses: browser-actions/setup-chrome@v1
       - name: Abhängigkeiten laden
         run: npm i
@@ -51,6 +58,7 @@ jobs:
         with:
           name: result
           path: dist/
+    needs: [version]
 
   deploy:
     name: Deployen
