@@ -11,15 +11,14 @@ export interface LebenslaufPersonenmeta {
     date: Date;
     ort: {
       stadt: string;
-      land: 'Deutschland' | string;
+      land: 'Deutschland';
     };
   };
-  staatsangehoerigkeit: 'deutsch' | string;
+  staatsangehoerigkeit: 'deutsch';
   familienstand:
     | 'ledig'
     | 'verheiratet'
     | 'verwitwet'
     | 'geschieden'
-    | 'eingetragene Lebenspartnerschaft'
-    | string;
+    | 'eingetragene Lebenspartnerschaft';
 }
