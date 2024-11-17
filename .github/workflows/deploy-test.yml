@@ -7,6 +7,36 @@ on:
   workflow_dispatch:
 
 jobs:
+  version:
+    name: Version setzen
+    runs-on: ubuntu-latest
+    steps:
+      - name: Aktuelle Major-Minor-Version ermitteln
+        id: major-minor-version
+        run: npm pkg get version --workspaces=false | tr -d \" | rev | cut -d '.' -f2- | rev >> $RESULT
+      - name: Patch-Version erhöhen
+        if: ${{ steps.major-minor-version.outputs.RESULT == env.MAJOR_MINOR_VERSION }}
+        uses: eriknyk/increment-variable-action@v1.0.0
+        with:
+          name: "PATCH_VERSION"
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+      - name: Patch-Version zurücksetzen
+        if: ${{ steps.major-minor-version.outputs.RESULT != env.MAJOR_MINOR_VERSION }}
+        uses: mmoyaferrer/set-github-variable@v1.0.0
+        with:
+          name: "PATCH_VERSION"
+          value: "0"
+          repository: Hirschfuchs/portfolio
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+      - name: Major-Minor-Version speichern
+        if: ${{ steps.major-minor-version.outputs.RESULT != env.MAJOR_MINOR_VERSION }}
+        uses: mmoyaferrer/set-github-variable@v1.0.0
+        with:
+          name: "MAJOR_MINOR_VERSION"
+          value: ${{ steps.major-minor-version.outputs.RESULT }}
+          repository: Hirschfuchs/portfolio
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
   build:
     name: Bauen
     runs-on: ubuntu-latest
