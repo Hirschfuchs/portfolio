@@ -84,7 +84,7 @@ jobs:
           path: dist/
       - name: Release erzeugen
         if: ${{ needs.get-version.outputs.major-minor-version != vars.MAJOR_MINOR_VERSION }}
-        uses: elgohr/Github-Release-Action@v5
+        uses: elgohr/Github-Release-Action@20240816194204
         env:
           GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
