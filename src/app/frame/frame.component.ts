@@ -3,10 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { ConfigurationService } from '../lebenslauf/configuration.service';
 
 @Component({
-  selector: 'app-frame',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './frame.component.html',
+    selector: 'app-frame',
+    imports: [RouterOutlet],
+    templateUrl: './frame.component.html'
 })
 export class FrameComponent {
   constructor(private readonly configurationService: ConfigurationService) {}

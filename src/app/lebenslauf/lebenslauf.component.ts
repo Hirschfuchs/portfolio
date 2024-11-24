@@ -8,16 +8,15 @@ import { KeyValuePairComponent } from './key-value-pair/key-value-pair.component
 import { lebenslaufZertifikatTypToString } from './model/lebenslaufZertifikat';
 
 @Component({
-  selector: 'app-lebenslauf',
-  standalone: true,
-  imports: [
-    FrameComponent,
-    Split2Component,
-    NgOptimizedImage,
-    KeyValuePairComponent,
-  ],
-  templateUrl: './lebenslauf.component.html',
-  styleUrl: './lebenslauf.component.scss',
+    selector: 'app-lebenslauf',
+    imports: [
+        FrameComponent,
+        Split2Component,
+        NgOptimizedImage,
+        KeyValuePairComponent,
+    ],
+    templateUrl: './lebenslauf.component.html',
+    styleUrl: './lebenslauf.component.scss'
 })
 export class LebenslaufComponent {
   protected readonly lebenslaufdaten = irgendwelcheLebenslaufdaten;

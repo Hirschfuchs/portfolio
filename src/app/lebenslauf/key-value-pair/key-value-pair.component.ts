@@ -8,11 +8,10 @@ enum IconState {
 }
 
 @Component({
-  selector: 'app-key-value-pair',
-  standalone: true,
-  imports: [MatIcon],
-  templateUrl: './key-value-pair.component.html',
-  styleUrl: './key-value-pair.component.scss',
+    selector: 'app-key-value-pair',
+    imports: [MatIcon],
+    templateUrl: './key-value-pair.component.html',
+    styleUrl: './key-value-pair.component.scss'
 })
 export class KeyValuePairComponent {
   public readonly key = input.required<string>();
