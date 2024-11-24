@@ -4,11 +4,10 @@ import { IAlbum, Lightbox, LightboxConfig, LightboxModule } from 'ngx-lightbox';
 import { PortfolioTexteMitBildernSektion } from '../../model/portfolio-sektion';
 
 @Component({
-  selector: 'app-portfolio-texte-mit-bildern',
-  standalone: true,
-  imports: [NgOptimizedImage, LightboxModule],
-  templateUrl: './portfolio-texte-mit-bildern.component.html',
-  styleUrl: './portfolio-texte-mit-bildern.component.scss',
+    selector: 'app-portfolio-texte-mit-bildern',
+    imports: [NgOptimizedImage, LightboxModule],
+    templateUrl: './portfolio-texte-mit-bildern.component.html',
+    styleUrl: './portfolio-texte-mit-bildern.component.scss'
 })
 export class PortfolioTexteMitBildernComponent {
   public sektion: InputSignal<PortfolioTexteMitBildernSektion> =

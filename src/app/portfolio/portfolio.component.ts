@@ -12,17 +12,16 @@ import { PortfolioSektion } from './model/portfolio-sektion';
  * Darstellung meiner Fähigkeiten und Qualitäten bereitzustellen.
  */
 @Component({
-  selector: 'app-portfolio',
-  standalone: true,
-  imports: [
-    MarkdownComponent,
-    NgOptimizedImage,
-    PortfolioTitelComponent,
-    PortfolioTexteMitBildernComponent,
-  ],
-  providers: [provideMarkdown({ loader: HttpClient })],
-  templateUrl: './portfolio.component.html',
-  styleUrl: './portfolio.component.scss',
+    selector: 'app-portfolio',
+    imports: [
+        MarkdownComponent,
+        NgOptimizedImage,
+        PortfolioTitelComponent,
+        PortfolioTexteMitBildernComponent,
+    ],
+    providers: [provideMarkdown({ loader: HttpClient })],
+    templateUrl: './portfolio.component.html',
+    styleUrl: './portfolio.component.scss'
 })
 export class PortfolioComponent {
   protected readonly sektionen: ReadonlyArray<PortfolioSektion> =
