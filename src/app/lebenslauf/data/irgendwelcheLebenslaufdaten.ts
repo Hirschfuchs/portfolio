@@ -20,6 +20,17 @@ const meta: LebenslaufPersonenmeta = {
     zweitname: 'Emilian',
     nachname: 'Mustermann',
   },
+  bild: {
+    src: '/data/assets/bewerbungsfoto-generic.jpg',
+    width: 1280,
+    height: 853,
+    alt: 'Mann mit Banane als Platzhalter für ein Bewerbungsfoto',
+    quelle: {
+      quelleName: 'Pixabay',
+      autor: 'Ryan McGuire',
+      url: 'https://pixabay.com/photos/suit-business-man-banana-business-673697/',
+    },
+  },
   geboren: {
     date: new Date('2000-01-01'),
     ort: {
