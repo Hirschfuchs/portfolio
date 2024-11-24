@@ -4,6 +4,7 @@ import { LebenslaufSkill } from './lebenslaufSkill';
 import { LebenslaufSonstiges } from './lebenslaufSonstiges';
 import { LebenslaufStationBildung } from './lebenslaufStationBildung';
 import { LebenslaufStationKarriere } from './lebenslaufStationKarriere';
+import { LebenslaufZertifikat } from './lebenslaufZertifikat';
 
 /**
  * Zusammengetragene Daten zur Befüllung des Lebenslaufs
@@ -19,4 +20,5 @@ export interface Lebenslaufdaten {
 
   hardskills: ReadonlyArray<LebenslaufSkill>;
   softskills: ReadonlyArray<string>;
+  zertifikateUndWeiterbildungen: ReadonlyArray<LebenslaufZertifikat>;
 }

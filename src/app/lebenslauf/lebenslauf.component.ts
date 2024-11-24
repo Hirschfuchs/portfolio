@@ -5,6 +5,7 @@ import { Split2Component } from '../split-2/split-2.component';
 import { ConfigurationService } from './configuration.service';
 import { irgendwelcheLebenslaufdaten } from './data/irgendwelcheLebenslaufdaten';
 import { KeyValuePairComponent } from './key-value-pair/key-value-pair.component';
+import { lebenslaufZertifikatTypToString } from './model/lebenslaufZertifikat';
 
 @Component({
   selector: 'app-lebenslauf',
@@ -47,4 +48,7 @@ export class LebenslaufComponent {
 
     return `${adressdaten.strasse} ${adressdaten.hausnummer}\n${adressdaten.plz} ${adressdaten.ort} ${ortsteil}`;
   }
+
+  protected readonly lebenslaufZertifikatTypToString =
+    lebenslaufZertifikatTypToString;
 }

@@ -118,6 +118,19 @@
             <li>{{ softskill }}</li>
           }
         </ul>
+        <h4>Zertifikate & Weiterbildungen</h4>
+        <ul>
+          @for (
+            zertifikat of lebenslaufdaten.zertifikateUndWeiterbildungen;
+            track $index
+          ) {
+            <li>
+              {{ zertifikat.name }} ({{
+                lebenslaufZertifikatTypToString(zertifikat.typ)
+              }})
+            </li>
+          }
+        </ul>
       </div>
     </ng-template></app-split-2
   >
