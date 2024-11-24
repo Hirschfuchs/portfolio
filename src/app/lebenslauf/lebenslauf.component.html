@@ -49,7 +49,76 @@
             [key]="sprache.bezeichnung"
             [levelValue]="sprache.level"
           />
-        }</div></ng-template
-    ><ng-template #contentRight></ng-template
-  ></app-split-2>
+        }
+        <h3>Sonstiges</h3>
+        <ul>
+          @for (
+            weitereInfo of lebenslaufdaten.weitereInfos.weitereBoni;
+            track $index
+          ) {
+            <li>{{ weitereInfo }}</li>
+          }
+        </ul>
+      </div></ng-template
+    ><ng-template #contentRight>
+      <div class="lebenslauf-right">
+        <h3>Berufserfahrung</h3>
+        @for (karrierestation of lebenslaufdaten.karriere; track $index) {
+          <h4>{{ karrierestation.arbeitgeber }}</h4>
+          <p class="karriere-titel">
+            {{ karrierestation.jobtitel }}
+          </p>
+          <p class="karriere-zeitraum">
+            {{ karrierestation.zeitraum }}
+          </p>
+          <ul>
+            @for (taetigkeit of karrierestation.taetigkeiten; track $index) {
+              <li>{{ taetigkeit }}</li>
+            }
+          </ul>
+        }
+
+        <h3>Bildungsweg</h3>
+        @for (bildungsstation of lebenslaufdaten.bildung; track $index) {
+          <h4>{{ bildungsstation.abschluss.abschlusstitel }}</h4>
+          <p class="bildung-einrichtung">
+            {{ bildungsstation.station.bildungseinrichtung }}
+          </p>
+          <p class="bildung-zeitraum">
+            {{ bildungsstation.abschluss.zeitraum }}
+          </p>
+          <p class="bildung-beschreibung">
+            {{ bildungsstation.station.beschreibung }}
+          </p>
+          <ul>
+            <li>
+              @if (bildungsstation.abschluss.abgeschlossen) {
+                Abschlussnote: {{ bildungsstation.abschluss.abschlussnote }}
+              } @else {
+                bisheriger Notendurchschnitt:
+                {{ bildungsstation.abschluss.bisherigeDurchschnittsnote }}
+              }
+            </li>
+          </ul>
+        }
+
+        <h3>Kenntnisse</h3>
+        <h4>Hard Skills</h4>
+        <div class="skills">
+          @for (hardskill of lebenslaufdaten.hardskills; track $index) {
+            <app-key-value-pair
+              [key]="hardskill.bezeichnung"
+              [levelValue]="hardskill.level"
+            />
+          }
+        </div>
+        <h4>Soft Skills</h4>
+        <ul>
+          @for (softskill of lebenslaufdaten.softskills; track $index) {
+            <li>{{ softskill }}</li>
+          }
+        </ul>
+      </div>
+    </ng-template></app-split-2
+  >
 </app-frame>

@@ -15,17 +15,46 @@ h3 {
   gap: 0.5rem;
 
   min-height: calc(100vh - (2 * $headerFooterHeight));
+
+  #bewerbungsfoto {
+    align-self: center;
+
+    border: 5px solid;
+    border-radius: 100%;
+
+    width: 10rem;
+    height: 10rem;
+
+    object-fit: cover;
+    object-position: 0 28%;
+  }
 }
 
-#bewerbungsfoto {
-  align-self: center;
+.lebenslauf-right {
+  h3 {
+    font-size: 1.5rem;
+    text-decoration: underline;
+  }
+  h4 {
+    margin: 0.5rem 0;
 
-  border: 5px solid;
-  border-radius: 100%;
+    font-size: 1.2rem;
+  }
 
-  width: 10rem;
-  height: 10rem;
+  p,
+  ul {
+    margin: 0.3rem 0;
+  }
 
-  object-fit: cover;
-  object-position: 0 28%;
+  .karriere-titel,
+  .karriere-zeitraum,
+  .bildung-einrichtung,
+  .bildung-zeitraum {
+    font-weight: bold;
+  }
+
+  .skills {
+    display: flex;
+    flex-direction: column;
+  }
 }
