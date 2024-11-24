@@ -1,3 +1,5 @@
+import { PortfolioImage } from '../../portfolio/model/portfolio-image';
+
 /**
  * Metadaten zur Person
  */
@@ -7,6 +9,7 @@ export interface LebenslaufPersonenmeta {
     zweitname?: string;
     nachname: string;
   };
+  bild: PortfolioImage;
   geboren: {
     date: Date;
     ort: {
