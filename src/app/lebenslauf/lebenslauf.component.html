@@ -50,15 +50,17 @@
             [levelValue]="sprache.level"
           />
         }
-        <h3>Sonstiges</h3>
-        <ul>
-          @for (
-            weitereInfo of lebenslaufdaten.weitereInfos.weitereBoni;
-            track $index
-          ) {
-            <li>{{ weitereInfo }}</li>
-          }
-        </ul>
+        @if (lebenslaufdaten.weitereInfos.weitereBoni.length > 0) {
+          <h3>Sonstiges</h3>
+          <ul>
+            @for (
+              weitereInfo of lebenslaufdaten.weitereInfos.weitereBoni;
+              track $index
+            ) {
+              <li>{{ weitereInfo }}</li>
+            }
+          </ul>
+        }
       </div></ng-template
     ><ng-template #contentRight>
       <div class="lebenslauf-right">
@@ -103,34 +105,40 @@
         }
 
         <h3>Kenntnisse</h3>
-        <h4>Hard Skills</h4>
-        <div class="skills">
-          @for (hardskill of lebenslaufdaten.hardskills; track $index) {
-            <app-key-value-pair
-              [key]="hardskill.bezeichnung"
-              [levelValue]="hardskill.level"
-            />
-          }
-        </div>
-        <h4>Soft Skills</h4>
-        <ul>
-          @for (softskill of lebenslaufdaten.softskills; track $index) {
-            <li>{{ softskill }}</li>
-          }
-        </ul>
-        <h4>Zertifikate & Weiterbildungen</h4>
-        <ul>
-          @for (
-            zertifikat of lebenslaufdaten.zertifikateUndWeiterbildungen;
-            track $index
-          ) {
-            <li>
-              {{ zertifikat.name }} ({{
-                lebenslaufZertifikatTypToString(zertifikat.typ)
-              }})
-            </li>
-          }
-        </ul>
+        @if (lebenslaufdaten.hardskills.length > 0) {
+          <h4>Hard Skills</h4>
+          <div class="skills">
+            @for (hardskill of lebenslaufdaten.hardskills; track $index) {
+              <app-key-value-pair
+                [key]="hardskill.bezeichnung"
+                [levelValue]="hardskill.level"
+              />
+            }
+          </div>
+        }
+        @if (lebenslaufdaten.softskills.length > 0) {
+          <h4>Soft Skills</h4>
+          <ul>
+            @for (softskill of lebenslaufdaten.softskills; track $index) {
+              <li>{{ softskill }}</li>
+            }
+          </ul>
+        }
+        @if (lebenslaufdaten.zertifikateUndWeiterbildungen.length > 0) {
+          <h4>Zertifikate & Weiterbildungen</h4>
+          <ul>
+            @for (
+              zertifikat of lebenslaufdaten.zertifikateUndWeiterbildungen;
+              track $index
+            ) {
+              <li>
+                {{ zertifikat.name }} ({{
+                  lebenslaufZertifikatTypToString(zertifikat.typ)
+                }})
+              </li>
+            }
+          </ul>
+        }
       </div>
     </ng-template></app-split-2
   >
