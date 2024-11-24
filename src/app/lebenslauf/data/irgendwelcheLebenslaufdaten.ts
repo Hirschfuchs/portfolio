@@ -4,6 +4,10 @@ import { LebenslaufPersonenmeta } from '../model/lebenslaufPersonenmeta';
 import { LebenslaufSkill } from '../model/lebenslaufSkill';
 import { LebenslaufStationBildung } from '../model/lebenslaufStationBildung';
 import { LebenslaufStationKarriere } from '../model/lebenslaufStationKarriere';
+import {
+  LebenslaufZertifikat,
+  LebenslaufZertifikatTyp,
+} from '../model/lebenslaufZertifikat';
 
 /**
  * Diese Datei gibt irgendwelche Lebenslaufdaten vor, um Doxxing zu verhindern.
@@ -92,6 +96,17 @@ const karriereIrgendwas2: LebenslaufStationKarriere = {
   taetigkeiten: ['Hobeln', 'Späne aufsammeln'],
 };
 
+const zertifikat: LebenslaufZertifikat = {
+  typ: LebenslaufZertifikatTyp.ZERTIFIKAT,
+  name: 'Zertifizierung für Wurmkuren',
+  schwerpunkte: ['Sammeln von Würmern', 'Entwurmen von Würmern'],
+};
+
+const weiterbildung: LebenslaufZertifikat = {
+  typ: LebenslaufZertifikatTyp.WEITERBILDUNG,
+  name: 'Deutsche Lektüre der zweiten Hälfte des 15. Jahrhunderts',
+};
+
 export const irgendwelcheLebenslaufdaten: Lebenslaufdaten = {
   meta,
   kontakt,
@@ -112,4 +127,5 @@ export const irgendwelcheLebenslaufdaten: Lebenslaufdaten = {
     'Selbstverwirklichung',
     'Kommunikationsfähigkeit',
   ],
+  zertifikateUndWeiterbildungen: [zertifikat, weiterbildung],
 };
