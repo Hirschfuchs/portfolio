@@ -6,6 +6,9 @@ on:
       - "main"
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.head_ref ||  github.ref }}
+
 jobs:
   test:
     name: Tests ausführen
@@ -14,7 +17,6 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref }}
           fetch-depth: 0
           token: ${{ secrets.BOT_TOKEN }}
 
