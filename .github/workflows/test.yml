@@ -6,6 +6,9 @@ on:
       - "main"
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.head_ref ||  github.ref }}
+
 jobs:
   test:
     name: Tests ausführen
@@ -13,9 +16,24 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.BOT_TOKEN }}
 
       - name: Abhängigkeiten laden
-        run: npm i
+        run: npm ci
+
+      - name: Code formatieren
+        run: npm run format-all
+
+      - name: Add corresponding commit
+        run: |
+          git config --global user.name 'OpenFoxes Maintenance Bot'
+          git config --global user.email 'openfoxes@bono-fox.de'
+          git init
+          git add .
+          git commit -m "🎨 Code formatiert"
+          git push -u origin HEAD:${{ github.event.pull_request.head.ref }}
 
       - name: Alle Tests ausführen
         run: npm run test-cov-headless

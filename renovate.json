@@ -9,6 +9,11 @@
   "commitMessageAction": "Aktualisiere",
   "commitMessageTopic": "Abhängigkeit {{depName}}",
   "commitMessageExtra": "auf {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewMajor}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "commitMessageAction": "Lockfile-Wartung",
+    "prBodyDefinitions": { "Change": "Alle Locks aktualisiert" }
+  },
   "packageRules": [
     {
       "matchUpdateTypes": ["pin"],
