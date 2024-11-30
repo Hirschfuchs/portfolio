@@ -8,9 +8,8 @@ describe('Split2Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Split2Component]
-    })
-    .compileComponents();
+      imports: [Split2Component],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Split2Component);
     component = fixture.componentInstance;
