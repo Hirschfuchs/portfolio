@@ -1,10 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "description": "Renovate-Konfiguration für mein Portfolio",
   "labels": ["👷 renovate"],
   "prHourlyLimit": 20,
-  "recreateClosed": true,
+  "recreateWhen": "always",
   "commitMessagePrefix": "⬆️ ",
   "commitMessageAction": "Aktualisiere",
   "commitMessageTopic": "Abhängigkeit {{depName}}",
@@ -12,7 +12,9 @@
   "lockFileMaintenance": {
     "enabled": true,
     "commitMessageAction": "Lockfile-Wartung",
-    "prBodyDefinitions": { "Change": "Alle Locks aktualisiert" }
+    "prBodyDefinitions": {
+      "Change": "Alle Locks aktualisiert"
+    }
   },
   "packageRules": [
     {
