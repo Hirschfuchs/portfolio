@@ -27,6 +27,7 @@ jobs:
         run: npm run format-all
 
       - name: Add corresponding commit
+        if: "!contains(github.event.head_commit.message, '🎨 Code formatiert')"
         run: |
           git config --global user.name 'OpenFoxes Maintenance Bot'
           git config --global user.email 'openfoxes@bono-fox.de'
