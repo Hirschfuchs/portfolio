@@ -81,6 +81,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: result
+          include-hidden-files: true
           path: dist/
       - name: Release erzeugen
         if: ${{ needs.get-version.outputs.major-minor-version != vars.MAJOR_MINOR_VERSION }}
