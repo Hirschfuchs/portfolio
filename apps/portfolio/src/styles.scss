@@ -1,0 +1,86 @@
+@import 'colors';
+@import 'fonts';
+
+$headerFooterHeight: 6rem;
+$minContentHeight: calc(100vh - (2 * $headerFooterHeight));
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  height: 100vh;
+
+  font-family: $font-fliesstext;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  font-weight: 700;
+  font-family: $font-ueberschrift;
+}
+
+.header,
+.footer {
+  position: relative;
+
+  z-index: 100;
+
+  background-color: $schraegen;
+  width: 100%;
+  height: $headerFooterHeight;
+
+  &.header {
+    top: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
+  }
+  &.footer {
+    top: 1rem;
+    clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 100%);
+
+    &.border {
+      top: 0;
+    }
+  }
+
+  &.border {
+    background-color: aqua;
+    height: $headerFooterHeight + 1rem;
+  }
+}
+
+.content {
+  min-height: $minContentHeight;
+}
+
+.background {
+  position: absolute;
+  top: -$headerFooterHeight;
+  z-index: -1;
+  background-color: $background-grau;
+  width: 100%;
+  height: calc(100% + (2 * $headerFooterHeight));
+}
+
+.bg-dunkel {
+  background-color: $background-dunkel;
+  color: $text-hell;
+}
+
+.bg-grau {
+  background-color: $background-grau;
+  color: $text-dunkel;
+}
+
+.bg-weiss {
+  background-color: $background-weiss;
+  color: $text-dunkel;
+}
